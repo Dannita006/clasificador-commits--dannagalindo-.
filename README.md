@@ -10,16 +10,11 @@ petición en **PostgreSQL**, está contenerizado con **Docker Compose** y valida
 Proyecto integrador de la acción de formación complementaria *Implementación de Soluciones de
 Inteligencia Artificial* (SENA, código 21730210).
 
-## Integrantes y perfil de hardware
+## Autora y perfil de hardware
 
-| Integrante | Rol |
-|------------|-----|
-| COMPLETAR: Nombre Apellido | COMPLETAR |
-| COMPLETAR: Nombre Apellido | COMPLETAR |
-| COMPLETAR: Nombre Apellido | COMPLETAR |
-
-- **Perfil de hardware con el que se trabajó:** COMPLETAR (A / B / C / D)
-- **Modelo de lenguaje:** COMPLETAR (`qwen2.5-coder:1.5b`, `qwen2.5:0.5b` o `gemma3:270m`)
+- **Autora:** Danna Galindo (trabajo individual)
+- **Perfil de hardware con el que se trabajó:** C
+- **Modelo de lenguaje:** gemma3:270m
 
 ## Arquitectura
 
@@ -44,8 +39,8 @@ El motor `eco` funciona sin Ollama.
 
 ```bash
 # 1) Clonar el repositorio
-git clone https://github.com/USUARIO/clasificador-commits-equipo.git
-cd clasificador-commits-equipo
+git clone https://github.com/Dannita006/clasificador-commits--dannagalindo-..git clasificador-commits
+cd clasificador-commits
 
 # 2) Instalar Docker, Git y Ollama (solo la primera vez). Cierre y reabra la terminal al terminar.
 ./setup.sh
@@ -140,16 +135,17 @@ Detalles en [`docs/manual-tecnico.md`](docs/manual-tecnico.md).
 
 ## Solución de problemas
 
-COMPLETAR: cada equipo debe documentar aquí **al menos cinco errores reales** que le ocurrieron.
-Punto de partida (reemplácelos por los suyos con su propia redacción):
+Errores reales que ocurrieron durante la instalación y cómo se resolvieron:
 
 | Error | Causa | Solución |
 |-------|-------|----------|
-| `permission denied ... docker daemon socket` | No se reabrió la terminal tras `usermod -aG docker` | Cerrar y reabrir la terminal |
-| `port is already allocated` | Otro contenedor usa el puerto 5432 u 8000 | `docker ps` y `docker rm -f <nombre>` |
-| `connection refused` a la base de datos | Dentro de Compose el host es `db`, no `localhost` | Revisar `DB_HOST` y `docker compose ps` |
-| `FATAL: password authentication failed` | Contraseña de `.env` distinta a la de `db/init.sql` | Igualarlas y `docker compose down -v` |
-| API responde 500 con motor `ollama` | Ollama detenido, modelo no descargado o escuchando solo en localhost | `ollama list`, `sudo systemctl status ollama`, `OLLAMA_HOST=0.0.0.0` |
+| `WslRegisterDistribution failed with error: 0x80370114` | Faltaba activar la plataforma de máquina virtual de Windows | Activar con `dism.exe` las características `Microsoft-Windows-Subsystem-Linux` y `VirtualMachinePlatform`, reiniciar y repetir `wsl --install -d Ubuntu-24.04` |
+| `Error: 740 ... Se requieren permisos elevados para ejecutar DISM` | PowerShell abierto sin permisos de administrador | Abrir PowerShell con clic derecho y Ejecutar como administrador |
+| `Key is invalid. You must supply a key in OpenSSH public key format` | La llave SSH se copió incompleta con el mouse | Copiarla automáticamente con `clip.exe` desde Ubuntu y pegarla en GitHub |
+| `We got an error adding your GPG key` | La llave SSH se pegó en la sección GPG | Usar New SSH key en la sección SSH keys |
+| `fatal: not in a git directory` | Se ejecutó `git config` antes de `git init` | Ejecutar primero `git init -b main` dentro de la carpeta del proyecto |
+| `cd: /mnt/c/Users/TU_USUARIO/Downloads: No such file or directory` | Se escribió TU_USUARIO literalmente | Reemplazarlo por el usuario real de Windows (se ve con `ls /mnt/c/Users`) |
+| `unzip: cannot find or open ...zip` | El archivo descargado traía otro zip dentro | Descomprimir primero `files.zip` y luego el zip interno |
 
 ## Documentación
 
@@ -158,9 +154,9 @@ Punto de partida (reemplácelos por los suyos con su propia redacción):
 
 ## Video de demostración
 
-COMPLETAR: enlace al video (3 a 5 minutos).
+Pendiente: el enlace se agregará al finalizar el curso.
 
 ## Convención de commits
 
 Se usa [Conventional Commits](https://www.conventionalcommits.org): `feat`, `fix`, `docs`,
-`test`, `chore`, `refactor`. Nadie sube directo a `main`: todo cambio pasa por rama y *pull request*.
+`test`, `chore`, `refactor`. Desde AA3 los cambios se integran mediante rama y *pull request*.

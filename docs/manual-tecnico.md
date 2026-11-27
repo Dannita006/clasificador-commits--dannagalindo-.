@@ -93,7 +93,7 @@ cat backups/respaldo_<fecha>.sql | docker compose exec -T db psql -U postgres -d
 
 - **Periodicidad propuesta:** diaria (cron a las 02:00) y antes de cada despliegue; conservar los
   últimos 7 respaldos diarios y 4 semanales.
-- **Responsable:** COMPLETAR (integrante del equipo / administrador del servidor).
+- **Responsable:** Danna Galindo.
 - Los `.sql` **no** se suben al repositorio (`backups/` está en `.gitignore`).
 - Nota: el respaldo hecho con `pg_dump` incluye `CREATE TABLE`; al restaurar sobre una base que ya
   tiene la tabla pueden aparecer errores "already exists" inofensivos. Para una restauración limpia,
