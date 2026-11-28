@@ -13,7 +13,7 @@
 | Tamaño en disco | `ollama list` | COMPLETAR |
 | Latencia de 5 ejecuciones (ms) | `time curl ...` cinco veces | COMPLETAR (5 valores) |
 | Latencia promedio | Promedio de las cinco | COMPLETAR |
-| RAM usada durante la inferencia | `free -h` mientras responde | COMPLETAR |
+| RAM usada durante la inferencia | `free -h` mientras responde | 914 MiB usados de 3.7 GiB (free -h a los 2 s de iniciar la inferencia) |
 | Calidad percibida (1 a 5) | Criterio propio, con una frase | COMPLETAR |
 
 Comando usado (reemplace el modelo por el suyo):
