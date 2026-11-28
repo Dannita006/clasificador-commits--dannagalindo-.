@@ -6,7 +6,7 @@ echo ">>> Actualizando el sistema..."
 sudo apt update && sudo apt upgrade -y
 
 echo ">>> Instalando utilidades base..."
-sudo apt install -y curl git ca-certificates nano python3-venv python3-pip
+sudo apt install -y curl git ca-certificates nano python3-venv python3-pip unzip zstd
 
 echo ">>> Instalando Docker Engine..."
 if ! command -v docker &> /dev/null; then

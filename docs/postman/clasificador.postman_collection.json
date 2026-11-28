@@ -1,0 +1,91 @@
+{
+  "info": {
+    "name": "Clasificador de commits",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8000"
+    }
+  ],
+  "item": [
+    {
+      "name": "GET /health",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/health"
+        }
+      }
+    },
+    {
+      "name": "POST /clasificar (motor eco)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/clasificar"
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"texto\": \"corrige el error de conexion a la base de datos\",\n  \"motor\": \"eco\"\n}"
+        }
+      }
+    },
+    {
+      "name": "POST /clasificar (motor ollama)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/clasificar"
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"texto\": \"agrega el endpoint de historial\",\n  \"motor\": \"ollama\"\n}"
+        }
+      }
+    },
+    {
+      "name": "POST /clasificar (motor invalido, espera 400)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/clasificar"
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"texto\": \"hola\",\n  \"motor\": \"inventado\"\n}"
+        }
+      }
+    },
+    {
+      "name": "GET /inferencias",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/inferencias?limite=5"
+        }
+      }
+    }
+  ]
+}
