@@ -110,10 +110,11 @@ curl "http://localhost:8000/inferencias?limite=5"
 ```bash
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt ruff
-docker compose up -d db          # solo la base de datos
-cp .env.example .env             # DB_HOST=localhost
+cp .env.example .env
+docker compose up -d --build
 ruff check app/ tests/
-pytest -v
+# Las pruebas corren dentro del contenedor de la API (alcanza a la base por el host db)
+docker compose run --rm -v "$PWD/tests:/app/tests:ro" -v "$PWD/pytest.ini:/app/pytest.ini:ro" api pytest -v
 ```
 
 Prueba de carga (contra el motor eco) y caracterización del modelo:
